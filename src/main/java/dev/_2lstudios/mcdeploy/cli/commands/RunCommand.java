@@ -21,6 +21,9 @@ public class RunCommand implements Callable<Integer> {
     @Option(description = "Directory where install server", names = { "-d", "--directory" })
     private File cwd;
 
+    @Option(description = "Accept EULA", defaultValue = "false", names = { "-e", "--eula" })
+    private boolean eula;
+
     @Option(description = "Jar file", defaultValue = "", names = { "-f", "--file" })
     private String file;
 
@@ -30,7 +33,7 @@ public class RunCommand implements Callable<Integer> {
     @Override
     public Integer call() throws IOException {
         MCDeploy mcd = new MCDeploy();
-        RunOptions options = new RunOptions().setCWD(this.cwd).setJava(this.java);
+        RunOptions options = new RunOptions().setCWD(this.cwd).setEula(this.eula).setJava(this.java);
 
         File dotMCDFile = new File(options.cwd, ".mcdeploy");
         if (this.file == null || this.file.isEmpty()) {
@@ -39,6 +42,7 @@ public class RunCommand implements Callable<Integer> {
 
         String banner = "Launching artifact:\n";
         banner += "> Console: " + this.console + "\n";
+        banner += "> Eula: " + this.eula + "\n";
         banner += "> Jar file: " + this.file + "\n";
         banner += "> JRE binary: " + options.java + "\n";
         banner += "> Working directory: " + options.cwd.getAbsolutePath() + "\n";

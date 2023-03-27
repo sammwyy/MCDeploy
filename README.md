@@ -43,6 +43,7 @@ java -jar mcdeploy.jar run --file server.jar # With specific jar file.
 |:------------|:---------:|:------------------------------:| -------------------------: |
 | --console   |    -c     |      Enable console output     |             ✔️             |
 | --directory |    -d     | Directory where run the server |        (Current dir)       |
+| --eula      |    -e     |     Accepts minecraft eula     |             ❌             |
 | --file      |    -f     |          Jar file name         | (Read from .mcdeploy file) |
 | --java      |    -j     |       Java runtime binary      |            java            |
 

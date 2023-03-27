@@ -63,6 +63,11 @@ public class SoftwareArtifact {
     public int run(RunOptions options, StdListener listener) throws IOException, InterruptedException {
         String cmd = options.java + " -jar " + this.getJARName();
         File cwd = options.cwd;
+
+        if (options.eula) {
+            FileUtils.writeFile(new File(cwd, "eula.txt"), "eula=true");
+        }
+
         return ProcessUtils.runAndWait(cmd, cwd, listener);
     }
 
