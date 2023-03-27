@@ -46,6 +46,43 @@ java -jar mcdeploy.jar run --file server.jar # With specific jar file.
 | --file      |    -f     |          Jar file name         | (Read from .mcdeploy file) |
 | --java      |    -j     |       Java runtime binary      |            java            |
 
+## Artifacts (Server versions)
+
+Server artifacts api provided by [Sammwy's Minecraft DB](https://github.com/sammwyy/minecraft-db)
+
+- Servers:
+  - Vanilla
+  - [Bukkit](https://github.com/Bukkit/Bukkit)
+  - [Glowstone](https://github.com/GlowstoneMC/Glowstone)
+  - [Leaves](https://github.com/LeavesMC/Leaves)
+  - [Paper](https://github.com/PaperMC/Paper)
+  - [Plazma](https://github.com/PlazmaMC/Plazma)
+  - [Pufferfish](https://github.com/pufferfish-gg/Pufferfish)
+  - [Purpur](https://github.com/PurpurMC/Purpur)
+  - [Reaper](https://github.com/ruViolence/Reaper)
+  - [Spigot](https://hub.spigotmc.org/stash/projects/SPIGOT/repos/spigot/browse)
+  - [Sponge](https://github.com/SpongePowered/Sponge)
+  - [Sportpaper](https://github.com/Electroid/SportPaper)
+  - [Tuinity](https://github.com/Tuinity/Tuinity)
+- Proxies:
+  - [BungeeCord](https://github.com/SpigotMC/BungeeCord)
+  - [Velocity](https://github.com/PaperMC/Velocity)
+  - [Waterfall](https://github.com/PaperMC/Waterfall)
+- Modded:
+  - [CatServer](https://github.com/Luohuayu/CatServer)
+  - [Crucible](https://github.com/CrucibleMC/Crucible)
+  - [Fabric](https://github.com/FabricMC/fabric)
+  - [Forge](https://github.com/MinecraftForge/MinecraftForge)
+  - [Magma](https://git.magmafoundation.org/magmafoundation/Magma)
+  - [Mohist](https://github.com/MohistMC/Mohist)
+  - [Quilt](https://github.com/QuiltMC/quilt-loader)
+- Bedrock:
+  - [Nukkit](https://github.com/CloudburstMC/Nukkit)
+  - [Pocketmine](https://github.com/pmmp/PocketMine-MP)
+- Misc:
+  - [Geyser](https://github.com/GeyserMC/Geyser)
+  - [Limbo](https://github.com/LOOHP/Limbo)
+
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
