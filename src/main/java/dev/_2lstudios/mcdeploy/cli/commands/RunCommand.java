@@ -14,6 +14,10 @@ import picocli.CommandLine.Option;
 
 @Command(name = "run", description = "Run server in current directory.")
 public class RunCommand implements Callable<Integer> {
+    @Option(description = "Enable/disable console input and output", defaultValue = "true", names = { "-c",
+            "--console" })
+    private boolean console;
+
     @Option(description = "Directory where install server", names = { "-d", "--directory" })
     private File cwd;
 
@@ -34,13 +38,14 @@ public class RunCommand implements Callable<Integer> {
         }
 
         String banner = "Launching artifact:\n";
+        banner += "> Console: " + this.console + "\n";
         banner += "> Jar file: " + this.file + "\n";
         banner += "> JRE binary: " + options.java + "\n";
         banner += "> Working directory: " + options.cwd.getAbsolutePath() + "\n";
         Logger.info(banner);
 
         try {
-            int exitCode = mcd.runLocal(this.file, System.out::print, options);
+            int exitCode = mcd.runLocal(this.file, this.console ? System.out::print : null, options);
             Logger.info("Process exited with code: " + exitCode);
         } catch (MCDException e) {
             Logger.crit(e.getMessage());

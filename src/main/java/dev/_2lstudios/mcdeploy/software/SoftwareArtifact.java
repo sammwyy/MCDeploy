@@ -46,7 +46,7 @@ public class SoftwareArtifact {
             File tempDir = installerFile.getParentFile();
 
             String cmd = installer.getExecute().replace("{version}", version).replace("{java}", options.java);
-            int status = ProcessUtils.runAndWait(cmd, tempDir, System.out::print);
+            int status = ProcessUtils.runAndWait(cmd, tempDir);
 
             if (status == 0) {
                 String archive = installer.getArchive();
