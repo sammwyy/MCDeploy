@@ -24,6 +24,7 @@ public class DownloadUtils {
     public static File downloadTemp(String url) throws IOException {
         String tmpdir = System.getProperty("java.io.tmpdir");
         File dir = new File(tmpdir, RandomUtils.randomString(16));
+        dir.mkdirs();
 
         String fileName = new File(url).getName();
         File file = new File(dir, fileName);

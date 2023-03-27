@@ -10,6 +10,7 @@ import dev._2lstudios.mcdeploy.software.RunOptions;
 
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
+import picocli.CommandLine.Parameters;
 
 @Command(name = "install", description = "Install a server artifact.")
 public class InstallCommand implements Callable<Integer> {
@@ -19,17 +20,13 @@ public class InstallCommand implements Callable<Integer> {
     @Option(description = "Java runtime binary", defaultValue = "java", names = { "-j", "--java" })
     private String java;
 
-    @Option(description = "Server software", defaultValue = "vanilla", names = { "-s", "--software" })
-    private String software;
-
-    @Option(description = "Server version", defaultValue = "latest", names = { "-v", "--version" })
-    private String version;
+    @Parameters(index = "0", arity = "0..1", description = "Server software and version", defaultValue = "vanilla@latest")
+    private String artifactId;
 
     @Override
     public Integer call() {
         MCDeploy mcd = new MCDeploy();
         RunOptions options = new RunOptions().setCWD(this.cwd).setJava(this.java);
-        String artifactId = this.software + "@" + this.version;
 
         try {
             Logger.info("Fetching for versions...");

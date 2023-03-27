@@ -1,12 +1,19 @@
 package dev._2lstudios.mcdeploy.utils;
 
-import java.nio.charset.Charset;
 import java.util.Random;
 
 public class RandomUtils {
+    private static String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+
     public static String randomString(int length) {
-        byte[] array = new byte[length];
-        new Random().nextBytes(array);
-        return new String(array, Charset.forName("UTF-8"));
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < length) {
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            salt.append(SALTCHARS.charAt(index));
+        }
+        String saltStr = salt.toString();
+        return saltStr;
+
     }
 }

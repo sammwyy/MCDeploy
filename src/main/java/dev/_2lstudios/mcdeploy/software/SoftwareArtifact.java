@@ -45,8 +45,8 @@ public class SoftwareArtifact {
             File installerFile = DownloadUtils.downloadTemp(this.url);
             File tempDir = installerFile.getParentFile();
 
-            String cmd = installer.getExecute().replace("{version}", url).replace("{java}", options.java);
-            int status = ProcessUtils.runAndWait(cmd, tempDir);
+            String cmd = installer.getExecute().replace("{version}", version).replace("{java}", options.java);
+            int status = ProcessUtils.runAndWait(cmd, tempDir, System.out::print);
 
             if (status == 0) {
                 String archive = installer.getArchive();
@@ -56,6 +56,8 @@ public class SoftwareArtifact {
 
             FileUtils.deleteRecursive(tempDir);
         }
+
+        FileUtils.writeFile(new File(options.cwd, ".mcdeploy"), this.getJARName());
     }
 
     public int run(RunOptions options, StdListener listener) throws IOException, InterruptedException {
