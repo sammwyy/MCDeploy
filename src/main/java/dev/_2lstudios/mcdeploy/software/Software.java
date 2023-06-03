@@ -9,7 +9,7 @@ public class Software {
     private Map<String, String> resources;
     private String url;
     private String type;
-    private List<String> versions;
+    public List<String> versions;
 
     public String getID() {
         return this.id;
