@@ -1,6 +1,7 @@
 package dev._2lstudios.mcdeploy.cli.commands;
 
 import java.io.File;
+import java.util.Scanner;
 import java.util.concurrent.Callable;
 
 import dev._2lstudios.mcdeploy.MCDeploy;
@@ -32,6 +33,20 @@ public class InstallCommand implements Callable<Integer> {
             Logger.info("Fetching for versions...");
             mcd.prepare();
 
+            Scanner input = new Scanner(System.in);
+            System.out.println("What type of server do you want to install? Select one of the following list.");
+            System.out.println(mcd.getSoftwareManager().softwares.keySet().toString());
+            String serverType = input.nextLine();
+            serverType = serverType.isEmpty() ? "vanilla" : serverType;
+
+            System.out.println("What version do you want to install?");
+            System.out.println(mcd.getSoftwareManager().softwares.get(serverType).versions);
+            String serverVersion = input.nextLine();
+            serverVersion = serverVersion.isEmpty() ? "latest" : serverVersion;
+
+            artifactId = serverType + "@" + serverVersion;
+            input.close();
+            
             Logger.info("Preparing for download artifact: " + artifactId);
             mcd.install(artifactId, options);
             Logger.info("Installed successfully.");

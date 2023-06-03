@@ -13,7 +13,7 @@ import dev._2lstudios.mcdeploy.errors.SoftwareFetchException;
 import dev._2lstudios.mcdeploy.utils.DownloadUtils;
 
 public class SoftwareManager {
-    private Map<String, Software> softwares;
+    public Map<String, Software> softwares;
 
     public SoftwareManager() {
         this.softwares = new HashMap<>();
